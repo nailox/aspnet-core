@@ -8,6 +8,7 @@ using BookStore.Users;
 using Abp.Domain.Uow;
 using Abp.ObjectMapping;
 using BookStore.Authorization.Users;
+using System.Linq;
 
 namespace BookStore.Books
 {
@@ -34,6 +35,9 @@ namespace BookStore.Books
 
             //null check ? 
             var books = _bookRepository.Single(book => book.ISBN == input.ISBN || book.AuthorName == input.AuthorName);
+
+
+          
 
             return new SearchBookOutput
             {
@@ -65,7 +69,7 @@ namespace BookStore.Books
 
                 _bookRepository.Insert(book);
 
-                System.Diagnostics.Debug.WriteLine("book insterted in repo");
+             
 
             }
 
@@ -76,38 +80,49 @@ namespace BookStore.Books
     
 }
 
-      //show all books 
+ 
         public GetBooksOutput GetBooks (GetAllBooksInput input)
         {
-            if (input.UserId == null) {
-            var books = _bookRepository.GetAllList();
-
+            if (input.UserId == null) {//show all books if user in role admin
+                                       //  var books = _bookRepository.GetAllList(book => book.Id > input.SkipCount && book.Id < (input.SkipCount + input.MaxResultCount) );
+                var books = _bookRepository.GetAllList().Skip(input.SkipCount).Take(input.MaxResultCount);
                 return new GetBooksOutput
                 {
-                    //  Books = List<BookDto>();
-                    // Books = Mapper.Map<List<BookDto>>(books)
-                    Books = _objectMapper.Map<List<BookDto>>(books)
+
+                    Books = _objectMapper.Map<List<BookDto>>(books),
+                    TotalCount = _bookRepository.Count()
             };
             }
 
             else
-            {
-                var books = _bookRepository.GetAllList(book => book.UserId == input.UserId);
+            {//show books only for current user
+                var books = _bookRepository.GetAllList(book => book.UserId == input.UserId).Skip(input.SkipCount ).Take(input.MaxResultCount);
 
                 return new GetBooksOutput
                 {
-                    Books = _objectMapper.Map<List<BookDto>>(books)
+                    Books = _objectMapper.Map<List<BookDto>>(books),
+                       TotalCount = _bookRepository.Count(book => book.UserId == input.UserId)
                 };
+
+                //TODO: use repository.count() to return total number of books to the frontend
+             
             }
         }
-        //show my books , also get here from logo click
+        
      
      
 
         //buttons 
         public void UpdateBook(UpdateBookInput input)
         {
-            var book = _bookRepository.Get(input.BookId);
+            var id = input.BookId;
+            var book = _bookRepository.Get(id);
+
+            if (!String.IsNullOrEmpty(input.Title))
+            {
+
+                book.Title = input.Title;
+            }
 
             if (!String.IsNullOrEmpty(input.ISBN))
             {
@@ -125,7 +140,7 @@ namespace BookStore.Books
                 book.Year = input.Year.Value;
             }
 
-            _bookRepository.Update(book);
+          //  _bookRepository.Update(book);
 
             }
         public void DeleteBook(DeleteBookInput input)

@@ -9,8 +9,10 @@ namespace BookStore.Books.Dtos
 {
     public class UpdateBookInput
     {
-        [Required]
+        
         public int BookId { get; set; }
+
+        public string Title { get; set; }
 
         public string ISBN { get; set; }
 

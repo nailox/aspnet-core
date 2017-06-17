@@ -6,6 +6,8 @@ namespace BookStore.Books.Dtos
 {
     public class GetAllBooksInput : IPagedResultRequest
     {
+   
+
         public int MaxResultCount
         {
             get;set;
