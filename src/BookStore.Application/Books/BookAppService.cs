@@ -9,6 +9,7 @@ using Abp.Domain.Uow;
 using Abp.ObjectMapping;
 using BookStore.Authorization.Users;
 using System.Linq;
+using Castle.Core.Logging;
 
 namespace BookStore.Books
 {
@@ -18,7 +19,7 @@ namespace BookStore.Books
         private readonly IRepository<Book> _bookRepository;
         private readonly UserManager _userManager;
         private readonly IObjectMapper _objectMapper;
-
+        public ILogger Logger { get; set; }
 
         public BookAppService(IRepository<Book> bookRepository, UserManager userManager, IObjectMapper mpr)
         {
@@ -27,7 +28,9 @@ namespace BookStore.Books
             _userManager = userManager;
 
             _objectMapper = mpr;
-            
+
+            Logger = NullLogger.Instance;
+
         }
 
         public SearchBookOutput SearchBook (SearchBookInput input)
@@ -69,7 +72,7 @@ namespace BookStore.Books
 
                 _bookRepository.Insert(book);
 
-             
+                Logger.Info("Inserted book with title: " + book.Title);
 
             }
 
@@ -115,8 +118,11 @@ namespace BookStore.Books
         //buttons 
         public void UpdateBook(UpdateBookInput input)
         {
-            var id = input.BookId;
-            var book = _bookRepository.Get(id);
+            
+            Logger.Info(" Updated book with title: " + input.Title);
+
+
+             var book = _bookRepository.Get(input.Id);
 
             if (!String.IsNullOrEmpty(input.Title))
             {
