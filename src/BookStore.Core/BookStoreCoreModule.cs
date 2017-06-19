@@ -8,6 +8,7 @@ using BookStore.MultiTenancy;
 using BookStore.Authorization.Roles;
 using BookStore.Authorization.Users;
 using BookStore.Timing;
+using Abp.MultiTenancy;
 
 namespace BookStore
 {
@@ -30,6 +31,8 @@ namespace BookStore
 
             //Configure roles
             AppRoleConfig.Configure(Configuration.Modules.Zero().RoleManagement);
+
+            Configuration.Modules.Zero().RoleManagement.StaticRoles.Add(new StaticRoleDefinition("Author", MultiTenancySides.Tenant));
         }
 
         public override void Initialize()

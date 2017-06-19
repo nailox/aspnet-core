@@ -10,6 +10,7 @@ using Abp.ObjectMapping;
 using BookStore.Authorization.Users;
 using System.Linq;
 using Castle.Core.Logging;
+using Abp.Extensions;
 
 namespace BookStore.Books
 {
@@ -86,34 +87,52 @@ namespace BookStore.Books
  
         public GetBooksOutput GetBooks (GetAllBooksInput input)
         {
-            if (input.UserId == null) {//show all books if user in role admin
-                                       //  var books = _bookRepository.GetAllList(book => book.Id > input.SkipCount && book.Id < (input.SkipCount + input.MaxResultCount) );
+           
+                if (input.Filter.IsNullOrEmpty())
+            { 
                 var books = _bookRepository.GetAllList().Skip(input.SkipCount).Take(input.MaxResultCount);
                 return new GetBooksOutput
                 {
 
                     Books = _objectMapper.Map<List<BookDto>>(books),
                     TotalCount = _bookRepository.Count()
-            };
+                };
             }
+                else
+                {
+                    var books = _bookRepository.GetAllList(
+                        book => book.Title.Contains(input.Filter) ||  book.ISBN.Contains(input.Filter) || book.AuthorName.Contains(input.Filter))
+                        .Skip(input.SkipCount).Take(input.MaxResultCount);
 
-            else
-            {//show books only for current user
-                var books = _bookRepository.GetAllList(book => book.UserId == input.UserId).Skip(input.SkipCount ).Take(input.MaxResultCount);
+                //get count of filtered books for paging 
+                var countFiltered = _bookRepository.GetAllList(
+                        book => book.Title.Contains(input.Filter) || book.ISBN.Contains(input.Filter) || book.AuthorName.Contains(input.Filter));
+
+
 
                 return new GetBooksOutput
                 {
-                    Books = _objectMapper.Map<List<BookDto>>(books),
-                       TotalCount = _bookRepository.Count(book => book.UserId == input.UserId)
-                };
 
-                //TODO: use repository.count() to return total number of books to the frontend
-             
-            }
+                    Books = _objectMapper.Map<List<BookDto>>(books),
+                    TotalCount = countFiltered.Count()
+                    };
+                }
+       
         }
-        
-     
-     
+
+        public GetBooksOutput GetMyBooks(GetAllBooksInput input)
+        {
+            // show books only for current user
+            var books = _bookRepository.GetAllList(book => book.UserId == input.UserId).Skip(input.SkipCount).Take(input.MaxResultCount);
+
+            return new GetBooksOutput
+            {
+                Books = _objectMapper.Map<List<BookDto>>(books),
+                TotalCount = _bookRepository.Count(book => book.UserId == input.UserId)
+            };
+        }
+
+
 
         //buttons 
         public void UpdateBook(UpdateBookInput input)
@@ -151,7 +170,9 @@ namespace BookStore.Books
             }
         public void DeleteBook(DeleteBookInput input)
         {
-            _bookRepository.Delete(input.BookId);
+            _bookRepository.Delete(input.Id);
+
+            Logger.Info(" Deleted book with id: " + input.Id);
         }
 
     }

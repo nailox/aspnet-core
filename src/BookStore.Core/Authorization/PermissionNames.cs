@@ -7,5 +7,9 @@
         public const string Pages_Tenants = "Pages.Tenants";
 
         public const string Pages_Users = "Pages.Users";
+
+        public const string Delete = "Delete";
+
+        public const string Edit = "Edit";
     }
 }

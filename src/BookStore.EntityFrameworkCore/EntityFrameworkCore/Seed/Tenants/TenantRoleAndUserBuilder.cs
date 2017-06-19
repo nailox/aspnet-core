@@ -8,6 +8,7 @@ using BookStore.Authorization.Roles;
 using BookStore.Authorization.Users;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
+using Castle.Core.Logging;
 
 namespace BookStore.EntityFrameworkCore.Seed.Tenants
 {
@@ -15,11 +16,13 @@ namespace BookStore.EntityFrameworkCore.Seed.Tenants
     {
         private readonly BookStoreDbContext _context;
         private readonly int _tenantId;
+        public ILogger Logger { get; set; }
 
         public TenantRoleAndUserBuilder(BookStoreDbContext context, int tenantId)
         {
             _context = context;
             _tenantId = tenantId;
+            Logger = NullLogger.Instance;
         }
 
         public void Create()
@@ -58,6 +61,39 @@ namespace BookStore.EntityFrameworkCore.Seed.Tenants
                 _context.SaveChanges();
             }
 
+            //Author role
+
+            var authorRole = _context.Roles.FirstOrDefault(r => r.TenantId == _tenantId && r.Name == StaticRoleNames.Tenants.Author);
+            if (authorRole == null)
+            {
+                authorRole = _context.Roles.Add(new Role(_tenantId, StaticRoleNames.Tenants.Author, StaticRoleNames.Tenants.Author) { IsStatic = true }).Entity;
+                _context.SaveChanges();
+
+                //Grant delete and edit permissions to author
+                //var permissions = PermissionFinder
+                //    .GetAllPermissions(new BookStoreAuthorizationProvider())
+                //    .Where(p => p.Name.Equals("Delete") || p.Name.Equals("Edit"))
+                //    .ToList();
+
+                //log
+             //   Logger.Info("----------No. of permissions:" + permissions.Count());
+
+                //foreach (var permission in permissions)
+                //{
+                //    _context.Permissions.Add(
+                //        new RolePermissionSetting
+                //        {
+                //            TenantId = _tenantId,
+                //            Name = permission.Name,
+                //            IsGranted = true,
+                //            RoleId = authorRole.Id
+                //        });
+                //}
+
+               // _context.SaveChanges();
+            }
+
+
             //admin user
 
             var adminUser = _context.Users.FirstOrDefault(u => u.TenantId == _tenantId && u.UserName == AbpUserBase.AdminUserName);
@@ -84,6 +120,36 @@ namespace BookStore.EntityFrameworkCore.Seed.Tenants
                         UserId = adminUser.Id,
                         UserName = AbpUserBase.AdminUserName,
                         EmailAddress = adminUser.EmailAddress
+                    });
+                    _context.SaveChanges();
+                }
+            }
+
+            //author user
+            var authorUser = _context.Users.FirstOrDefault(u => u.TenantId == _tenantId && u.UserName == "AuthorName");
+            if (authorUser == null)
+            {
+                authorUser = User.CreateTenantAuthorUser(_tenantId, "author@bookstore.com");
+                authorUser.Password = new PasswordHasher<User>(new OptionsWrapper<PasswordHasherOptions>(new PasswordHasherOptions())).HashPassword(authorUser, "authorpass");
+                authorUser.IsEmailConfirmed = true;
+                authorUser.IsActive = true;
+
+                _context.Users.Add(authorUser);
+                _context.SaveChanges();
+
+                //Assign Author role to author user
+                _context.UserRoles.Add(new UserRole(_tenantId, adminUser.Id, authorRole.Id));
+                _context.SaveChanges();
+
+                //User account of author user
+                if (_tenantId == 2)
+                {
+                    _context.UserAccounts.Add(new UserAccount
+                    {
+                        TenantId = _tenantId,
+                        UserId = authorUser.Id,
+                        UserName = "AuthorName",
+                        EmailAddress = "author@bookstore.com"
                     });
                     _context.SaveChanges();
                 }

@@ -20,5 +20,7 @@ namespace BookStore.Books.Dtos
         }
 
         public int? UserId { get; set; }
+
+        public string Filter { get; set; }
     }
 }

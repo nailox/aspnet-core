@@ -15,6 +15,18 @@ namespace BookStore.Authorization
                 pages = context.CreatePermission(PermissionNames.Pages, L("Pages"));
             }
 
+            var delete = context.GetPermissionOrNull(PermissionNames.Delete);
+            if (delete == null)
+            {
+                delete = context.CreatePermission(PermissionNames.Delete, L("Delete"));
+            }
+
+            var edit = context.GetPermissionOrNull(PermissionNames.Edit);
+            if (delete == null)
+            {
+                edit = context.CreatePermission(PermissionNames.Edit, L("Edit"));
+            }
+
             var users = pages.CreateChildPermission(PermissionNames.Pages_Users, L("Users"));
 
             //Host permissions

@@ -28,5 +28,21 @@ namespace BookStore.Authorization.Users
 
             return user;
         }
+
+        public static User CreateTenantAuthorUser(int tenantId, string emailAddress)
+        {
+            var user = new User
+            {
+                TenantId = tenantId,
+                UserName = "AuthorName",
+                Name = "AuthorName",
+                Surname = "AuthorName",
+                EmailAddress = "author@bookstore.com"
+            };
+
+            user.SetNormalizedNames();
+
+            return user;
+        }
     }
 }
