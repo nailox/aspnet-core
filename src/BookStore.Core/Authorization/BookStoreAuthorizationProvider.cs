@@ -22,7 +22,7 @@ namespace BookStore.Authorization
             }
 
             var edit = context.GetPermissionOrNull(PermissionNames.Edit);
-            if (delete == null)
+            if (edit == null)
             {
                 edit = context.CreatePermission(PermissionNames.Edit, L("Edit"));
             }

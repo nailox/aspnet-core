@@ -15,7 +15,7 @@ namespace BookStore
         void CreateBook(CreateBookInput input);
         void DeleteBook(DeleteBookInput input);
 
-        SearchBookOutput SearchBook(SearchBookInput input);
+      //  SearchBookOutput SearchBook(SearchBookInput input);
 
         GetBooksOutput GetBooks(GetAllBooksInput input);
 

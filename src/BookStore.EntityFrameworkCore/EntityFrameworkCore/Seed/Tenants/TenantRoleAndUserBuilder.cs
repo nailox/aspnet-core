@@ -56,6 +56,8 @@ namespace BookStore.EntityFrameworkCore.Seed.Tenants
                             IsGranted = true,
                             RoleId = adminRole.Id
                         });
+
+                    Logger.Info("permission granted to admin: "+permission.Name);
                 }
 
                 _context.SaveChanges();
@@ -69,28 +71,30 @@ namespace BookStore.EntityFrameworkCore.Seed.Tenants
                 authorRole = _context.Roles.Add(new Role(_tenantId, StaticRoleNames.Tenants.Author, StaticRoleNames.Tenants.Author) { IsStatic = true }).Entity;
                 _context.SaveChanges();
 
-                //Grant delete and edit permissions to author
+                Logger.Info("added author role");
+
+
                 //var permissions = PermissionFinder
                 //    .GetAllPermissions(new BookStoreAuthorizationProvider())
-                //    .Where(p => p.Name.Equals("Delete") || p.Name.Equals("Edit"))
+                //    .Where(p => p.Name.Equals("Pages.Users"))
                 //    .ToList();
 
                 //log
-             //   Logger.Info("----------No. of permissions:" + permissions.Count());
+                //   Logger.Info("----------No. of permissions:" + permissions.Count());
 
-                //foreach (var permission in permissions)
-                //{
-                //    _context.Permissions.Add(
-                //        new RolePermissionSetting
-                //        {
-                //            TenantId = _tenantId,
-                //            Name = permission.Name,
-                //            IsGranted = true,
-                //            RoleId = authorRole.Id
-                //        });
-                //}
 
-               // _context.SaveChanges();
+                //grant Pages.Users permission to author
+                _context.Permissions.Add(
+                        new RolePermissionSetting
+                        {
+                            TenantId = _tenantId,
+                            Name = "Pages.Users",
+                            IsGranted = true,
+                            RoleId = authorRole.Id
+                        });
+              
+
+                 _context.SaveChanges();
             }
 
 
@@ -138,11 +142,11 @@ namespace BookStore.EntityFrameworkCore.Seed.Tenants
                 _context.SaveChanges();
 
                 //Assign Author role to author user
-                _context.UserRoles.Add(new UserRole(_tenantId, adminUser.Id, authorRole.Id));
+                _context.UserRoles.Add(new UserRole(_tenantId, authorUser.Id, authorRole.Id));
                 _context.SaveChanges();
 
                 //User account of author user
-                if (_tenantId == 2)
+                if (_tenantId == 1)
                 {
                     _context.UserAccounts.Add(new UserAccount
                     {

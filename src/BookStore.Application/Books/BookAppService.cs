@@ -34,22 +34,6 @@ namespace BookStore.Books
 
         }
 
-        public SearchBookOutput SearchBook (SearchBookInput input)
-        {
-
-            //null check ? 
-            var books = _bookRepository.Single(book => book.ISBN == input.ISBN || book.AuthorName == input.AuthorName);
-
-
-          
-
-            return new SearchBookOutput
-            {
-               // BookResults = Mapper.Map<List<BookDto>>(books)
-            };
-
-           
-        }
 
      
         public void CreateBook(CreateBookInput input)

@@ -19,6 +19,9 @@ namespace BookStore.EntityFrameworkCore
 
         public override void PreInitialize()
         {
+
+      
+
             if (!SkipDbContextRegistration)
             {
                 Configuration.Modules.AbpEfCore().AddDbContext<BookStoreDbContext>(configuration =>
