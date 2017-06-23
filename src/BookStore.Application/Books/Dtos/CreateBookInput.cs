@@ -20,9 +20,11 @@ namespace BookStore.Books.Dtos
 
         public string AuthorName { get; set; }
 
-
+        
         public int Year { get; set; }
 
-       
+        public string ImageLink { get; set; }
+
+
     }
 }

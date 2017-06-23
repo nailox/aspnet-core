@@ -327,3 +327,27 @@ INFO  2017-06-21 00:36:23,511 [1    ] BookStore.Migrator.Log                   -
 INFO  2017-06-21 00:36:23,804 [1    ] BookStore.Migrator.Log                   - All databases have been migrated.
 DEBUG 2017-06-21 00:36:25,511 [1    ] Abp.Modules.AbpModuleManager             - Shutting down has been started
 DEBUG 2017-06-21 00:36:25,513 [1    ] Abp.Modules.AbpModuleManager             - Shutting down completed.
+DEBUG 2017-06-21 09:21:28,220 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2017-06-21 09:21:28,824 [1    ] Abp.Modules.AbpModuleManager             - Found 8 ABP modules in total.
+DEBUG 2017-06-21 09:21:29,791 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BookStore.Migrator.BookStoreMigratorModule, BookStore.Migrator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-06-21 09:21:29,797 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BookStore.EntityFrameworkCore.BookStoreEntityFrameworkModule, BookStore.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-06-21 09:21:29,798 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BookStore.BookStoreCoreModule, BookStore.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-06-21 09:21:29,799 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=2.0.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-06-21 09:21:29,800 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=2.0.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-06-21 09:21:29,801 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-06-21 09:21:29,801 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=2.0.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-06-21 09:21:29,803 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=2.0.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-06-21 09:21:29,810 [1    ] Abp.Modules.AbpModuleManager             - 8 modules loaded.
+DEBUG 2017-06-21 09:21:30,790 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: BookStore.EntityFrameworkCore.BookStoreDbContext, BookStore.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-06-21 09:21:32,924 [1    ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2017-06-21 09:21:33,064 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2017-06-21 09:21:33,075 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2017-06-21 09:21:33,079 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: BookStore
+INFO  2017-06-21 09:21:33,116 [1    ] BookStore.Migrator.Log                   - Host database: Data Source=.\SQLEXPRESS; Database=BookStoreDb; Trusted_Connection=True;
+INFO  2017-06-21 09:21:33,117 [1    ] BookStore.Migrator.Log                   - Continue to migration for this host database and all tenants..? (Y/N): 
+INFO  2017-06-21 09:21:36,374 [1    ] BookStore.Migrator.Log                   - HOST database migration started...
+INFO  2017-06-21 09:21:45,191 [1    ] BookStore.Migrator.Log                   - HOST database migration completed.
+INFO  2017-06-21 09:21:45,191 [1    ] BookStore.Migrator.Log                   - --------------------------------------------------------
+INFO  2017-06-21 09:21:45,408 [1    ] BookStore.Migrator.Log                   - All databases have been migrated.
+DEBUG 2017-06-21 09:21:46,505 [1    ] Abp.Modules.AbpModuleManager             - Shutting down has been started
+DEBUG 2017-06-21 09:21:46,506 [1    ] Abp.Modules.AbpModuleManager             - Shutting down completed.

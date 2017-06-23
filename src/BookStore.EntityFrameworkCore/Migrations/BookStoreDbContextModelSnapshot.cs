@@ -881,6 +881,8 @@ namespace BookStore.Migrations
 
                     b.Property<string>("ISBN");
 
+                    b.Property<string>("ImageLink");
+
                     b.Property<string>("Summary");
 
                     b.Property<string>("Title");

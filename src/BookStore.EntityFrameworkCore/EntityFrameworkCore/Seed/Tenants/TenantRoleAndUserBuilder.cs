@@ -72,30 +72,22 @@ namespace BookStore.EntityFrameworkCore.Seed.Tenants
                 _context.SaveChanges();
 
                 Logger.Info("added author role");
-
-
-                //var permissions = PermissionFinder
-                //    .GetAllPermissions(new BookStoreAuthorizationProvider())
-                //    .Where(p => p.Name.Equals("Pages.Users"))
-                //    .ToList();
-
-                //log
-                //   Logger.Info("----------No. of permissions:" + permissions.Count());
-
-
+                
                 //grant Pages.Users permission to author
-                _context.Permissions.Add(
-                        new RolePermissionSetting
-                        {
-                            TenantId = _tenantId,
-                            Name = "Pages.Users",
-                            IsGranted = true,
-                            RoleId = authorRole.Id
-                        });
-              
-
-                 _context.SaveChanges();
+             
             }
+
+            _context.Permissions.Add(
+                     new RolePermissionSetting
+                     {
+                         TenantId = _tenantId,
+                         Name = "Pages.Users",
+                         IsGranted = true,
+                         RoleId = authorRole.Id
+                     });
+
+
+            _context.SaveChanges();
 
 
             //admin user

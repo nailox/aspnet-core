@@ -20,5 +20,7 @@ namespace BookStore.Books.Dtos
         public  long? UserId { get; set; }
 
         public  int Year { get; set; }
+
+        public string ImageLink { get; set; }
     }
 }

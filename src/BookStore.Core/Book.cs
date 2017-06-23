@@ -5,13 +5,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BookStore
 {
-  
+    [Table("Books")]
     public class Book : Entity
     {
-        //  [ForeignKey("BookAuthorId")]
-        //    public virtual User User { get; set; }
-
-        //    public virtual int? BookAuthorId { get; set; }
+      
      
         public virtual string AuthorName { get; set; }
         public virtual string ISBN { get; set; }
@@ -21,7 +18,7 @@ namespace BookStore
 
         public virtual int Year { get; set; }
 
-
+        public virtual string ImageLink { get; set; }
 
         public Book ()
         {

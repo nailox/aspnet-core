@@ -38,7 +38,7 @@ namespace BookStore.Books
      
         public void CreateBook(CreateBookInput input)
         {
-            //TODO: add logger
+           
             
             try
             {
@@ -50,7 +50,8 @@ namespace BookStore.Books
                     Year = input.Year,
                     ISBN = input.ISBN,
                     UserId = AbpSession.UserId,
-                    AuthorName = input.AuthorName
+                    AuthorName = input.AuthorName,
+                    ImageLink = input.ImageLink
 
 
                 };
