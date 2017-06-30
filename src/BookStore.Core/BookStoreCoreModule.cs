@@ -9,6 +9,7 @@ using BookStore.Authorization.Roles;
 using BookStore.Authorization.Users;
 using BookStore.Timing;
 using Abp.MultiTenancy;
+using Abp.Localization;
 
 namespace BookStore
 {
@@ -25,6 +26,8 @@ namespace BookStore
             Configuration.Modules.Zero().EntityTypes.User = typeof(User);
 
             BookStoreLocalizationConfigurer.Configure(Configuration.Localization);
+
+            Configuration.Localization.Languages.Add(new LanguageInfo("bg", "Български", "famfamfam-flag-bulgaria", true));
 
             //Enable this line to create a multi-tenant application.
             Configuration.MultiTenancy.IsEnabled = BookStoreConsts.MultiTenancyEnabled;

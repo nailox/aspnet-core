@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<localizationDictionary culture="bg">
+  <texts>
+    <text name="HomePage" value="Начало" />
+      <text name="Home" value="Начало" />
+    <text name="About" value="За нас" />
+    <text name="WellcomeMessage" value="Добре дошли в е-книжарница!" />
+
+    <text name="FormIsNotValidMessage" value="Form is not valid. Please check and fix errors." />
+    <text name="TenantNameCanNotBeEmpty" value="Името на потребителя не може да е празно" />
+
+    <text name="InvalidUserNameOrPassword" value="Невалидно потребителско име или парола" />
+    <text name="ThereIsNoTenantDefinedWithName{0}" value="There is no tenant defined with name {0}" />
+    <text name="TenantIsNotActive" value="Tenant {0} is not active." />
+    <text name="UserIsNotActiveAndCanNotLogin" value="User {0} is not active and can not log in." />
+    <text name="UserEmailIsNotConfirmedAndCanNotLogin">Your email address is not confirmed. You can not login</text>
+    <text name="UserLockedOutMessage">Този акаунт е заключен. Моля опитайте по-късно.</text>
+    <text name="PleaseEnterLoginInformation" value="Моля въведете вашата логин информация" />
+    <text name="TenancyName" value="Tenancy name" />
+    <text name="UserNameOrEmail" value="Потребителско име или парола" />
+    <text name="Password" value="Парола" />
+    <text name="RememberMe" value="Запомни ме" />
+    <text name="LogIn" value="Вписване" />
+
+    <text name="LoginFailed" value="Грешка при вписване!" />
+
+    <text name="NameSurname" value="Фамилия" />
+    <text name="UserName" value="Потребителско име" />
+    <text name="Name" value="Име" />
+    <text name="Surname" value="Фамилия" />
+    <text name="EmailAddress" value="Емайл адрес" />
+
+    <text name="Tenants" value="Tenants" />
+    <text name="SavedSuccessfully" value="Запазването е успешно" />
+    <text name="CreateNewTenant" value="Create new tenant" />
+    <text name="AdminEmailAddress" value="Admin email address" />
+    <text name="Save" value="Запази" />
+    <text name="Cancel" value="Отмени" />
+    <text name="TenantName_Regex_Description" value="Tenant name must be at least 2 chars, starts with a letter and continue with letter, number, dash or underscore." />
+    <text name="DefaultPasswordIs" value="Default password is {0}" />
+    <text name="CanBeEmptyToLoginAsHost" value="Can be empty to login as host." />
+    <text name="Register" value="Регистрация" />
+    <text name="OrLoginWith" value="Или се впишете с" />
+    <text name="WaitingForActivationMessage" value="Your account is waiting to be activated by system admin." />
+    <text name="TenantSelection" value="Tenant Selection" />
+    <text name="TenantSelection_Detail" value="Please select one of the following tenants." />
+    <text name="Logout" value="Отписване" />
+
+    <text name="RegisterFormUserNameInvalidMessage">Моля не използвайте емайл за потребителско име.</text>
+
+    <text name="DatabaseConnectionString" value="Database connection string" />
+    <text name="Users" value="Потребители" />
+    <text name="IsActive" value="е активен" />
+    <text name="FullName" value="Име и фамилия" />
+    <text name="CreateNewUser" value="Създаване на нов потребител" />
+    <text name="Yes" value="Да" />
+    <text name="No" value="Не" />
+    <text name="Optional" value="Optional" />
+    <text name="LeaveEmptyToSwitchToHost">Leave empty to switch to the host</text>
+    <text name="CurrentTenant">Current tenant</text>
+    <text name="NotSelected">Not selected</text>
+    <text name="Change">Промени</text> 
+   <text name="ChangeTenant">Change tenant</text>
+    <!--Bookstore strings--> 
+   <text name="AddBook">Добави книга</text>
+   <text name="AllBooks">Всички книги</text>
+   <text name="MyBooks">Моите книги</text>
+   <text name="Title">Заглавие</text>
+   <text name="Year">Година</text>
+   <text name="Author">Автор</text>
+   <text name="Summary">Резюме</text>
+   <text name="LinkToBookImage">Линк към изображение на корица</text>
+   <text name="Published">Публикувана</text>
+   <text name="TitleIsRequired">Заглавието е задължително</text>
+   <text name="SummaryIsRequired">Резюмето е задължително</text>
+   <text name="YearOfPublishIsRequired">Годината на публикуване е задължителна</text>
+   <text name="ISBNIsNotInCorrectFormat">ISBN не е в правилния формат</text>
+   <text name="ImageLinkSupportsOnly">Линкът за изображението поддържа само .jpg .gif .png формати. Моля уверете се, че линкът завършва на някой от тези формати.</text>
+   <text name="UpdatedSuccessfully">Редакцията е успешна</text>
+       <text name="SureDelete">Сигурни ли сте, че искате да изтриете книгата?</text>
+       <text name="DeletedSuccessfully">Изтриването е успешно</text>
+      <text name="SearchBy">Търсене по заглавие, автор или ISBN</text>
+    <text name="ThankYouForYourRating">Благодарим ви за оценката</text>
+
+
+
+
+
+
+  </texts>
+</localizationDictionary>

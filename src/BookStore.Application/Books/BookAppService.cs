@@ -150,9 +150,19 @@ namespace BookStore.Books
                 book.Year = input.Year.Value;
             }
 
-          //  _bookRepository.Update(book);
-
+            if (!String.IsNullOrEmpty(input.ImageLink))
+            {
+                book.ImageLink = input.ImageLink;
             }
+
+            if (input.Rating.HasValue)
+            {
+                book.Rating = input.Rating;
+            }
+
+            //  _bookRepository.Update(book);
+
+        }
         public void DeleteBook(DeleteBookInput input)
         {
             _bookRepository.Delete(input.Id);

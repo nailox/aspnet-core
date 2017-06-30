@@ -20,6 +20,8 @@ namespace BookStore
 
         public virtual string ImageLink { get; set; }
 
+        public virtual float? Rating { get; set; }
+
         public Book ()
         {
             //UserId = IAbpSession.UserId;

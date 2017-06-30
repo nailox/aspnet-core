@@ -27,6 +27,12 @@ namespace BookStore.Authorization
                 edit = context.CreatePermission(PermissionNames.Edit, L("Edit"));
             }
 
+            var rate = context.GetPermissionOrNull(PermissionNames.Rate);
+            if (rate == null)
+            {
+                rate = context.CreatePermission(PermissionNames.Rate, L("Rate"));
+            }
+
             var users = pages.CreateChildPermission(PermissionNames.Pages_Users, L("Users"));
 
             //Host permissions

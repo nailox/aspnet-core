@@ -73,7 +73,7 @@ namespace BookStore.EntityFrameworkCore.Seed.Tenants
 
                 Logger.Info("added author role");
                 
-                //grant Pages.Users permission to author
+                //grant Pages.Users and Rate permission to author
              
             }
 
@@ -85,6 +85,16 @@ namespace BookStore.EntityFrameworkCore.Seed.Tenants
                          IsGranted = true,
                          RoleId = authorRole.Id
                      });
+
+            _context.Permissions.Add(
+                    new RolePermissionSetting
+                    {
+                        TenantId = _tenantId,
+                        Name = "Rate",
+                        IsGranted = true,
+                        RoleId = authorRole.Id
+                    });
+
 
 
             _context.SaveChanges();

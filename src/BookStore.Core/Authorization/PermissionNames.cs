@@ -11,5 +11,7 @@
         public const string Delete = "Delete";
 
         public const string Edit = "Edit";
+
+        public const string Rate = "Rate";
     }
 }

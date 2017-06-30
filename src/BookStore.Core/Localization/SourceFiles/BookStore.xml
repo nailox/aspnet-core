@@ -61,5 +61,28 @@
     <text name="NotSelected">Not selected</text>
     <text name="Change">Change</text>
     <text name="ChangeTenant">Change tenant</text>
+      <!--Bookstore strings-->
+    <text name="AddBook">Add Book</text>
+    <text name="AllBoks">All Books</text>
+    <text name="MyBooks">My Books</text>
+    <text name="Title">Title</text>
+    <text name="Year">Year</text>
+    <text name="Author">Author</text>
+    <text name="Summary">Summary</text>
+    <text name="LinkToBookImage">Link to cover image</text>
+    <text name="Published">Published</text>
+    <text name="TitleIsRequired">Title is required</text>
+    <text name="SummaryIsRequired">Summary is required</text>
+    <text name="YearOfPublishIsRequired">Year of publish is required</text>
+    <text name="ISBNIsNotInCorrectFormat">ISBN is not in correct format</text>
+    <text name="ImageLinkSupportsOnly">Image link supports only .jpg, .gif and .png formats. Please make sure your link ends in one of those formats.</text>
+    <text name="UpdatedSuccessfully">Updated Successfully</text>
+    <text name="SureDelete">Are you sure you want to delete this book?</text>
+    <text name="DeletedSuccessfully">Deleted Successfully</text>
+    <text name="SearchBy">Search by title, author or ISBN</text>
+    <text name="ThankYouForYourRating">Thank you for your rating</text>
+    
+    
+    
   </texts>
 </localizationDictionary>

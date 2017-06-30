@@ -22,5 +22,7 @@ namespace BookStore.Books.Dtos
         public  int Year { get; set; }
 
         public string ImageLink { get; set; }
+
+        public float? Rating { get; set; }
     }
 }

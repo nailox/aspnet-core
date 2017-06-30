@@ -883,6 +883,8 @@ namespace BookStore.Migrations
 
                     b.Property<string>("ImageLink");
 
+                    b.Property<float>("Rating");
+
                     b.Property<string>("Summary");
 
                     b.Property<string>("Title");
