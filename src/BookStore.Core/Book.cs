@@ -22,6 +22,8 @@ namespace BookStore
 
         public virtual float? Rating { get; set; }
 
+
+
         public Book ()
         {
             //UserId = IAbpSession.UserId;

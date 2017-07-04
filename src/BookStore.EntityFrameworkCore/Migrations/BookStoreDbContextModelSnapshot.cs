@@ -883,7 +883,7 @@ namespace BookStore.Migrations
 
                     b.Property<string>("ImageLink");
 
-                    b.Property<float>("Rating");
+                    b.Property<float?>("Rating");
 
                     b.Property<string>("Summary");
 
@@ -945,6 +945,20 @@ namespace BookStore.Migrations
                     b.HasIndex("TenancyName");
 
                     b.ToTable("AbpTenants");
+                });
+
+            modelBuilder.Entity("BookStore.Rating", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("BookId");
+
+                    b.Property<long?>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Ratings");
                 });
 
             modelBuilder.Entity("Abp.Application.Features.EditionFeatureSetting", b =>

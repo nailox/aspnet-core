@@ -18,14 +18,17 @@ namespace BookStore.Books
     {
 
         private readonly IRepository<Book> _bookRepository;
+        private readonly IRepository<Rating> _ratingRepository;
         private readonly UserManager _userManager;
         private readonly IObjectMapper _objectMapper;
         public ILogger Logger { get; set; }
 
-        public BookAppService(IRepository<Book> bookRepository, UserManager userManager, IObjectMapper mpr)
+        public BookAppService(IRepository<Book> bookRepository, IRepository<Rating> ratingRepository, UserManager userManager, IObjectMapper mpr)
         {
             _bookRepository = bookRepository;
-        
+
+            _ratingRepository = ratingRepository;
+
             _userManager = userManager;
 
             _objectMapper = mpr;
@@ -34,12 +37,37 @@ namespace BookStore.Books
 
         }
 
+        public Boolean UpdateRating (UpdateRatingInput input)
+        {
+            
 
+            if (_ratingRepository.FirstOrDefault(r => r.BookId == input.Id && r.UserId == AbpSession.UserId) != null)
+            {
+                return false;
+            }
+            else
+            {
+                var currentRating = _bookRepository.Get(input.Id).Rating;
+                var numberOfVotes = _ratingRepository.GetAllList(r => r.BookId == input.Id).Count + 1;
+                var updatedRating = (currentRating + input.NewRating) / numberOfVotes;
+                var book = _bookRepository.Get(input.Id);
+                book.Rating = updatedRating;
+
+                var rating = new Rating
+                {
+                    UserId = AbpSession.UserId,
+                    BookId = input.Id
+                };
+
+                _ratingRepository.Insert(rating);
+
+                return true;
+            }
+        }
      
         public void CreateBook(CreateBookInput input)
         {
-           
-            
+  
             try
             {
               
@@ -63,7 +91,7 @@ namespace BookStore.Books
             }
 
             catch (Exception e)
-            { Console.WriteLine(e.StackTrace); }
+            { Logger.Info("Exception in CreateBook: " + e); }
       
 
     

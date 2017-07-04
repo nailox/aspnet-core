@@ -81,6 +81,8 @@
     <text name="DeletedSuccessfully">Deleted Successfully</text>
     <text name="SearchBy">Search by title, author or ISBN</text>
     <text name="ThankYouForYourRating">Thank you for your rating</text>
+    <text name="YouHaveAlreadyRatedForThisBook">You have already rated this book</text>
+    <text name="EditBook">Edit Book</text>
     
     
     

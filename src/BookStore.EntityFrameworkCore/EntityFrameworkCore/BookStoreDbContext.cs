@@ -10,6 +10,8 @@ namespace BookStore.EntityFrameworkCore
     {
         /* Define an IDbSet for each entity of the application */
         public virtual DbSet<Book> Books { get; set; }
+
+        public virtual DbSet<Rating> Ratings { get; set; }
         public BookStoreDbContext(DbContextOptions<BookStoreDbContext> options)
             : base(options)
         {

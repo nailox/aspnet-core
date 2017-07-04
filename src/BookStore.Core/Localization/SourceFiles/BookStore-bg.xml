@@ -81,7 +81,8 @@
        <text name="DeletedSuccessfully">Изтриването е успешно</text>
       <text name="SearchBy">Търсене по заглавие, автор или ISBN</text>
     <text name="ThankYouForYourRating">Благодарим ви за оценката</text>
-
+    <text name="YouHaveAlreadyRatedForThisBook">Вече сте гласували за тази книга</text>
+    <text name="EditBook">Редакция на книга</text>
 
 
 
