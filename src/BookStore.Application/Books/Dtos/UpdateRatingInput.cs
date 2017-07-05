@@ -7,9 +7,9 @@ namespace BookStore.Books.Dtos
 {
    public class UpdateRatingInput
     {
-        [Required]
+        
         public int Id { get; set; } //Id of book to update rating
 
-        public int NewRating { get; set; }
+        public float? NewRating { get; set; }
     }
 }

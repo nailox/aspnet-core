@@ -47,11 +47,15 @@ namespace BookStore.Books
             }
             else
             {
-                var currentRating = _bookRepository.Get(input.Id).Rating;
+                var book = _bookRepository.Get(input.Id);
+                var currentRating = book.Rating;
                 var numberOfVotes = _ratingRepository.GetAllList(r => r.BookId == input.Id).Count + 1;
                 var updatedRating = (currentRating + input.NewRating) / numberOfVotes;
-                var book = _bookRepository.Get(input.Id);
+              
                 book.Rating = updatedRating;
+
+                Logger.Info("updated rating for : " + book.Title);
+           
 
                 var rating = new Rating
                 {
@@ -70,7 +74,7 @@ namespace BookStore.Books
   
             try
             {
-              
+
                 var book = new Book
                 {
                     Title = input.Title,
@@ -79,8 +83,8 @@ namespace BookStore.Books
                     ISBN = input.ISBN,
                     UserId = AbpSession.UserId,
                     AuthorName = input.AuthorName,
-                    ImageLink = input.ImageLink
-
+                    ImageLink = input.ImageLink,
+                    Rating = 0
 
                 };
 

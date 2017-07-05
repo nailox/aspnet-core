@@ -19,6 +19,8 @@ namespace BookStore
 
         GetBooksOutput GetBooks(GetAllBooksInput input);
 
+        GetBooksOutput GetMyBooks(GetAllBooksInput input);
+
 
 
     }
