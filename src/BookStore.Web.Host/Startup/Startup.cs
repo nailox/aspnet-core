@@ -30,7 +30,7 @@ namespace BookStore.Web.Host.Startup
 {
     public class Startup
     {
-        private const string DefaultCorsPolicyName = "localhost";
+        private const string DefaultCorsPolicyName = "http://bookstoreclient.azurewebsites.net";
 
         private readonly IConfigurationRoot _appConfiguration;
 

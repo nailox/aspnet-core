@@ -8,22 +8,18 @@ namespace BookStore.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<float>(
-                name: "Rating",
-                table: "Books",
-                nullable: true,
-                oldClrType: typeof(float));
+            migrationBuilder.AddColumn<float>(
+               name: "Rating",
+               table: "Books",
+               nullable: true);
 
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<float>(
+            migrationBuilder.DropColumn(
                 name: "Rating",
-                table: "Books",
-                nullable: false,
-                oldClrType: typeof(float),
-                oldNullable: true);
+                table: "Books");
         }
     }
 }

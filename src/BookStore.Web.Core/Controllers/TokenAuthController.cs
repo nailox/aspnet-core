@@ -18,6 +18,7 @@ using BookStore.Models.TokenAuth;
 using BookStore.MultiTenancy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Castle.Core.Logging;
 
 namespace BookStore.Controllers
 {
@@ -31,6 +32,7 @@ namespace BookStore.Controllers
         private readonly IExternalAuthConfiguration _externalAuthConfiguration;
         private readonly IExternalAuthManager _externalAuthManager;
         private readonly UserRegistrationManager _userRegistrationManager;
+        public ILogger Logger { get; set; }
 
         public TokenAuthController(
             LogInManager logInManager,
@@ -48,6 +50,7 @@ namespace BookStore.Controllers
             _externalAuthConfiguration = externalAuthConfiguration;
             _externalAuthManager = externalAuthManager;
             _userRegistrationManager = userRegistrationManager;
+            Logger = NullLogger.Instance;
         }
 
         [HttpPost]
@@ -143,7 +146,7 @@ namespace BookStore.Controllers
                 Authorization.Users.User.CreateRandomPassword(),
                 true
             );
-
+            Logger.Info("external user: " + externalUser.Name + " " + externalUser.Surname+" "+ externalUser.EmailAddress);
             user.Logins = new List<UserLogin>
             {
                 new UserLogin

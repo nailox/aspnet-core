@@ -25,6 +25,7 @@ namespace BookStore.Authorization.Users
             };
 
             user.SetNormalizedNames();
+            
 
             return user;
         }
