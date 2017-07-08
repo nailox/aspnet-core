@@ -138,6 +138,8 @@ namespace BookStore.Controllers
 
         private async Task<User> RegisterExternalUserAsync(ExternalAuthUserInfo externalUser)
         {
+            Logger.Info("external user: " + externalUser.Name + " " + externalUser.Surname + " " + externalUser.EmailAddress);
+
             var user = await _userRegistrationManager.RegisterAsync(
                 externalUser.Name,
                 externalUser.Surname,
@@ -146,7 +148,6 @@ namespace BookStore.Controllers
                 Authorization.Users.User.CreateRandomPassword(),
                 true
             );
-            Logger.Info("external user: " + externalUser.Name + " " + externalUser.Surname+" "+ externalUser.EmailAddress);
             user.Logins = new List<UserLogin>
             {
                 new UserLogin
