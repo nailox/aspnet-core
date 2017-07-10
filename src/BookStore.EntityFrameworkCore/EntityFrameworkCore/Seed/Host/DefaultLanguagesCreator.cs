@@ -23,8 +23,9 @@ namespace BookStore.EntityFrameworkCore.Seed.Host
                 new ApplicationLanguage(null, "tr", "Türkçe", "famfamfam-flags tr"),
                 new ApplicationLanguage(null, "ru", "Русский", "famfamfam-flags ru"),
                 new ApplicationLanguage(null, "zh-CN", "简体中文", "famfamfam-flags cn"),
-                new ApplicationLanguage(null, "es-MX", "Español México", "famfamfam-flags mx")
-               
+                new ApplicationLanguage(null, "es-MX", "Español México", "famfamfam-flags mx"),
+                 new ApplicationLanguage(null, "bg", "Български", "famfamfam-flags bg")
+
             };
         }
 
