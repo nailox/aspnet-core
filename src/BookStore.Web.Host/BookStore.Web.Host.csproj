@@ -9,6 +9,7 @@
     <UserSecretsId>AbpCompanyName-BookStore-56C2EF2F-ABD6-4EFC-AAF2-2E81C34E8FB1</UserSecretsId>
     <ApplicationInsightsResourceId>/subscriptions/32ec34ca-9a54-43c9-bd18-d0fbe025f429/resourcegroups/bookstore_resource/providers/microsoft.insights/components/BookStoreAppDemo</ApplicationInsightsResourceId>
     <ApplicationInsightsAnnotationResourceId>/subscriptions/32ec34ca-9a54-43c9-bd18-d0fbe025f429/resourcegroups/bookstore_resource/providers/microsoft.insights/components/BookStoreAppDemo</ApplicationInsightsAnnotationResourceId>
+	 <runtimeidentifiers>win10-x64</runtimeidentifiers>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(TargetFramework)' == 'net461' ">
     <DefineConstants>FEATURE_SIGNALR</DefineConstants>

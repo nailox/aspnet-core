@@ -9,6 +9,7 @@
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
     <RootNamespace>BookStore</RootNamespace>
+	 <runtimeidentifiers>win10-x64</runtimeidentifiers>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\BookStore.Core\BookStore.Core.csproj" />

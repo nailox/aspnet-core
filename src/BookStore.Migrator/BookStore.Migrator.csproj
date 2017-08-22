@@ -8,6 +8,7 @@
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+	 <runtimeidentifiers>win10-x64</runtimeidentifiers>
   </PropertyGroup>
   <ItemGroup>
     <None Update="appsettings.json;log4net.config">
