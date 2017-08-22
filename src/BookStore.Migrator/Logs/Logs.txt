@@ -22,3 +22,63 @@ INFO  2017-08-21 15:15:49,242 [1    ] BookStore.Migrator.Log                   -
 INFO  2017-08-21 15:15:49,576 [1    ] BookStore.Migrator.Log                   - All databases have been migrated.
 DEBUG 2017-08-21 15:15:52,688 [1    ] Abp.Modules.AbpModuleManager             - Shutting down has been started
 DEBUG 2017-08-21 15:15:52,689 [1    ] Abp.Modules.AbpModuleManager             - Shutting down completed.
+DEBUG 2017-08-22 02:20:42,487 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2017-08-22 02:20:42,743 [1    ] Abp.Modules.AbpModuleManager             - Found 8 ABP modules in total.
+DEBUG 2017-08-22 02:20:43,953 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BookStore.Migrator.BookStoreMigratorModule, BookStore.Migrator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-08-22 02:20:43,958 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BookStore.EntityFrameworkCore.BookStoreEntityFrameworkModule, BookStore.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-08-22 02:20:43,959 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BookStore.BookStoreCoreModule, BookStore.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-08-22 02:20:43,960 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=2.0.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-08-22 02:20:43,960 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=2.0.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-08-22 02:20:43,961 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-08-22 02:20:43,961 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=2.0.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-08-22 02:20:43,962 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=2.0.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-08-22 02:20:43,968 [1    ] Abp.Modules.AbpModuleManager             - 8 modules loaded.
+DEBUG 2017-08-22 02:20:45,275 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: BookStore.EntityFrameworkCore.BookStoreDbContext, BookStore.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-08-22 02:20:47,456 [1    ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2017-08-22 02:20:47,633 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2017-08-22 02:20:47,645 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2017-08-22 02:20:47,652 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: BookStore
+INFO  2017-08-22 02:20:47,685 [1    ] BookStore.Migrator.Log                   - Host database: Driver={SQL Server Native Client 10.0};Server=mssql6.gear.host;Database=bookstoreschema;Uid=bookstoreschema;Pwd=Gb31q?EO?6Q4;
+INFO  2017-08-22 02:20:47,686 [1    ] BookStore.Migrator.Log                   - Continue to migration for this host database and all tenants..? (Y/N): 
+INFO  2017-08-22 02:20:50,905 [1    ] BookStore.Migrator.Log                   - HOST database migration started...
+INFO  2017-08-22 02:20:55,552 [1    ] BookStore.Migrator.Log                   - An error occured during migration of host database:
+INFO  2017-08-22 02:20:55,709 [1    ] BookStore.Migrator.Log                   - System.ArgumentException: Keyword not supported: 'driver'.
+   at System.Data.Common.DbConnectionOptions.ParseInternal(Dictionary`2 parsetable, String connectionString, Boolean buildChain, Dictionary`2 synonyms)
+   at System.Data.Common.DbConnectionOptions..ctor(String connectionString, Dictionary`2 synonyms)
+   at System.Data.SqlClient.SqlConnectionString..ctor(String connectionString)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnectionOptions(String connectionString, DbConnectionOptions previous)
+   at System.Data.ProviderBase.DbConnectionFactory.GetConnectionPoolGroup(DbConnectionPoolKey key, DbConnectionPoolGroupOptions poolOptions, DbConnectionOptions& userConnectionOptions)
+   at System.Data.SqlClient.SqlConnection.ConnectionString_Set(DbConnectionPoolKey key)
+   at System.Data.SqlClient.SqlConnection.set_ConnectionString(String value)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.SqlServerConnection.CreateDbConnection()
+   at Microsoft.EntityFrameworkCore.Internal.LazyRef`1.get_Value()
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.Migrate(String targetMigration)
+   at Abp.Zero.EntityFrameworkCore.AbpZeroDbMigrator`1.CreateOrMigrate(AbpTenantBase tenant, Action`1 seedAction)
+   at BookStore.Migrator.MultiTenantMigrateExecuter.Run(Boolean skipConnVerification) in C:\Users\nmand\Desktop\BookStore\aspnet-core\src\BookStore.Migrator\MultiTenantMigrateExecuter.cs:line 63
+INFO  2017-08-22 02:20:55,710 [1    ] BookStore.Migrator.Log                   - Canceled migrations.
+DEBUG 2017-08-22 02:21:17,765 [1    ] Abp.Modules.AbpModuleManager             - Shutting down has been started
+DEBUG 2017-08-22 02:21:17,766 [1    ] Abp.Modules.AbpModuleManager             - Shutting down completed.
+DEBUG 2017-08-22 02:30:56,463 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2017-08-22 02:30:56,746 [1    ] Abp.Modules.AbpModuleManager             - Found 8 ABP modules in total.
+DEBUG 2017-08-22 02:30:57,913 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BookStore.Migrator.BookStoreMigratorModule, BookStore.Migrator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-08-22 02:30:57,919 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BookStore.EntityFrameworkCore.BookStoreEntityFrameworkModule, BookStore.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-08-22 02:30:57,920 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BookStore.BookStoreCoreModule, BookStore.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-08-22 02:30:57,920 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=2.0.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-08-22 02:30:57,921 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=2.0.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-08-22 02:30:57,921 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-08-22 02:30:57,922 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=2.0.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-08-22 02:30:57,923 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=2.0.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-08-22 02:30:57,930 [1    ] Abp.Modules.AbpModuleManager             - 8 modules loaded.
+DEBUG 2017-08-22 02:30:59,240 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: BookStore.EntityFrameworkCore.BookStoreDbContext, BookStore.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-08-22 02:31:01,751 [1    ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2017-08-22 02:31:01,880 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2017-08-22 02:31:01,890 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2017-08-22 02:31:01,896 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: BookStore
+INFO  2017-08-22 02:31:01,935 [1    ] BookStore.Migrator.Log                   - Host database: Data Source=mssql6.gear.host;Initial Catalog=bookstoreschema;User ID=bookstoreschema;Password=Gb31q?EO?6Q4
+INFO  2017-08-22 02:31:01,935 [1    ] BookStore.Migrator.Log                   - Continue to migration for this host database and all tenants..? (Y/N): 
+INFO  2017-08-22 02:31:04,352 [1    ] BookStore.Migrator.Log                   - HOST database migration started...
+INFO  2017-08-22 02:31:52,050 [1    ] BookStore.Migrator.Log                   - HOST database migration completed.
+INFO  2017-08-22 02:31:52,050 [1    ] BookStore.Migrator.Log                   - --------------------------------------------------------
+INFO  2017-08-22 02:31:52,825 [1    ] BookStore.Migrator.Log                   - All databases have been migrated.
+DEBUG 2017-08-22 02:32:00,419 [1    ] Abp.Modules.AbpModuleManager             - Shutting down has been started
+DEBUG 2017-08-22 02:32:00,419 [1    ] Abp.Modules.AbpModuleManager             - Shutting down completed.
